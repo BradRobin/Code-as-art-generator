@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Result - {{ filename }}</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        h2 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            overflow-x: auto;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+        }
+
+        .ascii-art {
+            background: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .visual-art {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/" class="back-link">&larr; Upload another file</a>
+
+    <div class="container">
+        <h1>Art Generated for <code>{{ filename }}</code></h1>
+
+        <div class="grid">
+            <div>
+                <h2>Visual Art</h2>
+                <img src="{{ url_for('static', filename='generated/' + viz_image) }}" alt="Visual Art"
+                    class="visual-art">
+            </div>
+            <div>
+                <h2>ASCII Art</h2>
+                <pre class="ascii-art">{{ ascii_art }}</pre>
+            </div>
+        </div>
+
+        <h2>Code Poetry</h2>
+        <pre class="ascii-art" style="background: #fdf6e3; color: #657b83;">{{ poem }}</pre>
+
+        <h2>Original Code</h2>
+        <pre>{{ code_content }}</pre>
+    </div>
+</body>
+
+</html>

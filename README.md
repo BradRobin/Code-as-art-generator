@@ -113,10 +113,84 @@ The generator maps keywords to symbols to visualize control flow:
  |   |  <-
 ```
 
+
+## Visual Art Generation (Graphics)
+
+Generate abstract visual representations of your code structure using Matplotlib.
+
+### Usage
+
+```python
+from src.parser import PythonCodeParser
+from src.visual_generator import VisualArtGenerator
+
+code = """
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
+"""
+
+parser = PythonCodeParser()
+tokens = parser.parse(code)
+
+viz_gen = VisualArtGenerator()
+# Save as PNG
+viz_gen.generate(tokens, "output.png")
+```
+
+The generator maps code elements to colored blocks:
+- **Keywords**: Red
+- **Variables**: Dark Gray
+- **Strings**: Green
+- **Numbers**: Blue
+- **Operators**: Orange
+
 ## Running Tests
 
 To run the unit tests, execute the following command from the project root:
 
+
+## Automation & Gallery
+
+This repository includes a GitHub Action workflow (`.github/workflows/art-gallery.yml`) that automatically generates art for the source code on every push to the `main` branch.
+
+The generated art is stored in the `gallery/` directory:
+- `gallery/ascii/`: ASCII art representations of source files.
+- `gallery/graphics/`: Visual (Matplotlib) representations of source files.
+
+To run the gallery generator locally:
+
 ```bash
-python -m unittest discover tests
+python repo_gallery_gen.py
 ```
+
+## Web Application
+
+A lightweight Flask web application is included to upload files and view generated art in the browser.
+
+### Local Usage
+
+1.  Install dependencies:
+    ```bash
+    pip install flask gunicorn
+    ```
+2.  Run the app:
+    ```bash
+    python app.py
+    ```
+3.  Open `http://localhost:5000` in your browser.
+
+### Deployment
+
+The app is ready for deployment on platforms like Heroku.
+
+- **Procfile**: Included for Gunicorn execution.
+- **runtime.txt**: Specifies Python version.
+
+To deploy:
+1.  Create a Heroku app.
+2.  Push command: `git push heroku main`.
