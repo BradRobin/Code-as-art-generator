@@ -89,6 +89,23 @@ Check out the `gallery/` folder for auto-generated examples from this repository
 |------------|-----------|
 | ![Visual](gallery/graphics/ascii_generator.png) | [ascii_generator.txt](gallery/ascii/ascii_generator.txt) |
 
+
+## Hall of Fame 🏆
+
+A showcase of the most creative uses of the Code-as-Art Generator submitted by the community.
+
+| Art | Description | Author |
+|-----|-------------|--------|
+| ![Demo](gallery/graphics/visual_generator.png) | *Origins* - Visualizing the generator itself | @BradRobin |
+
+> **Want to be featured?**
+> Submit your art via a GitHub Issue with the label `art-submission`!
+
+## Contributing
+
+We welcome contributions! whether it's code, bug reports, or just sharing your generated art.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
 ## Developer Setup
 
 See [docs/SETUP.md](docs/SETUP.md) for detailed instructions on contributing and running tests.
