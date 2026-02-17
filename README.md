@@ -64,6 +64,55 @@ The output is a list of token objects:
 ]
 ```
 
+## ASCII Art Generation
+
+The project includes an `AsciiArtGenerator` that creates abstract visual representations of your code.
+
+### Usage
+
+```python
+from src.parser import PythonCodeParser
+from src.ascii_generator import AsciiArtGenerator
+
+code = """
+def check(x):
+    if x > 0:
+        return True
+    else:
+        return False
+"""
+
+parser = PythonCodeParser()
+tokens = parser.parse(code)
+
+generator = AsciiArtGenerator()
+ascii_art = generator.generate(tokens)
+print(ascii_art)
+
+# Save to file
+generator.save_to_file(ascii_art, "output.txt")
+```
+
+### Visual Style
+
+The generator maps keywords to symbols to visualize control flow:
+
+- `[F]`: Function Definition
+- `<?>`: Conditional (if)
+- ` : `: Else/Alternative
+- `(O)`: Loop (for/while)
+- `<-`: Return
+- `>>>`: Print
+
+**Example Output:**
+```
+[F]
+ |  <?>
+ |   |  <-
+ |  :
+ |   |  <-
+```
+
 ## Running Tests
 
 To run the unit tests, execute the following command from the project root:
